@@ -1,12 +1,12 @@
 /*********************************************************************************
-* BTI325 – Assignment 2
+* BTI325 – Assignment 4
 * I declare that this assignment is my own work in accordance with Seneca Academic Policy.
 * No part of this assignment has been copied manually or electronically from any other source
 * (including web sites) or distributed to other students.
 *
-* Name: LO TSZ KIT Student ID: 160067211 Date: 2022/09/29
+* Name: LO TSZ KIT Student ID: 160067211 Date: 2022/10/26
 *
-* Online (Cyclic) URL:https://plum-mysterious-cockatoo.cyclic.app/
+* * https://senecaweba3.herokuapp.com/
 * _______________________________________________________
 *
 ********************************************************************************/
@@ -105,6 +105,20 @@ function getEmployeeByNum(num){
     }) 
 }
 
+function updateEmployee(employeeData){
+    return  new Promise( (resolve,reject)=> {
+        
+        for (let i=0;i<employees.length;i++){
+            if (employees[i].employeeNum==employeeData.employeeNum){
+                employees[i] = employeeData
+                resolve()
+            }
+        }
+
+        reject("No matched results!")
+    }) 
+}
+
 module.exports = {
     initialize,
     getAllEmployees,
@@ -114,5 +128,6 @@ module.exports = {
     getEmployeesByStatus,
     getEmployeesByDepartment,
     getEmployeesByManager,
-    getEmployeeByNum
+    getEmployeeByNum,
+    updateEmployee
 }
